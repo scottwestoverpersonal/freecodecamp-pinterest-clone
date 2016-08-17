@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <% include ../partials/header.ejs %>
+</head>
+
+<body>
+  <% include ../partials/navbar.ejs %>
+
+  <!-- Begin Container -->
+<div class="container">
+    <div class="grid" style="position: relative; height: 184px;">
+      <div class="grid-sizer"></div>
+    </div>
+ </div>
+  <!-- /.container -->
+
+  <script>
+  $.ajax({
+    type: 'GET',
+    url: '/getImages',
+    success: function(data) {
+        console.log(data);
+        for(var i = 0; i < data.images.length; i++){
+                var htmlCards = '<div class="grid-item"><div class="card">';
+                htmlCards += '<div class="img-wrapper"><img src="'+data.images[i].url+'" class="img-responsive img-rounded" onerror="imgError(this);"></div>';
+                htmlCards += '<div class="caption text-center"><div class="pin-title">'+data.images[i].name+'<br><a href="/userWall?email='+data.images[i].user+'">'+data.images[i].user+'</a></div></div></div></div>';
+                $('.grid').append(htmlCards);
+        }
+        setTimeout(function(){ 
+                  $('.grid').masonry({
+              // set itemSelector so .grid-sizer is not used in layout
+              itemSelector: '.grid-item',
+              // use element for option
+              columnWidth: '.grid-sizer',
+              percentPosition: true
+            });
+        }, 200);
+    }
+  });
+  function imgError(image) {
+        image.onerror = "";
+        image.src = "http://www.avsforum.com/photopost/data/2277869/9/9f/9f50538d_test.jpeg";
+        return true;
+    }
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,45 @@
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+        <a class="navbar-brand" href="/">FCC-Pin</a>
+      </div>
+      <form action="/logout" method="post" id="my_form">
+      <div id="navbar" class="collapse navbar-collapse">
+        <ul class="nav navbar-nav">
+          <li id="recentLink"><a href="/">Recent</a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+          <li id="mypinsLink"><a href="/myPins">My Pins</a></li>
+          <li id="addLink"><a href="/add">Add</a></li>
+          <li id="loginLink"><a href="/login">Sign In/Create Account</a></li>
+          <li id="logoutLink">
+              <a href="javascript:{}" onclick="document.getElementById('my_form').submit(); return false;">Sign Out</a>
+          </li>
+        </ul>
+      </div>
+      </form>
+      <!--/.nav-collapse -->
+    </div>
+  </nav>
+  
+<script>
+  var currentURL = window.location.pathname;
+  if(currentURL === "/add"){
+    document.getElementById("addLink").className = "active";
+  }
+  else if(currentURL === "/"){
+    document.getElementById("recentLink").className = "active";
+  }
+  else if(currentURL === "/myPins"){
+    document.getElementById("mypinsLink").className = "active";
+  }
+  else if(currentURL === "/login"){
+    document.getElementById("loginLink").className = "active";
+  }
+</script>

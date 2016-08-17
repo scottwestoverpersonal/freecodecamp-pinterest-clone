@@ -1,0 +1,27 @@
+{
+  "name": "node-js-getting-started",
+  "version": "0.2.5",
+  "description": "A sample Node.js app using Express 4",
+  "engines": {
+    "node": "5.9.1"
+  },
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "assert": "^1.4.1",
+    "ejs": "2.4.1",
+    "express": "4.13.3",
+    "express-stormpath": "^3.1.2",
+    "mongodb": "^2.2.4",
+    "nodemon": "^1.9.2",
+    "request": "^2.74.0"
+  },
+  "keywords": [
+    "node",
+    "heroku",
+    "express"
+  ],
+  "license": "MIT"
+}
