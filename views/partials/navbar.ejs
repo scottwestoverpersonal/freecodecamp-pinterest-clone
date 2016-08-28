@@ -15,13 +15,17 @@
           <li id="recentLink"><a href="/">Recent</a></li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
+          <% if (user2 != null) { %>
           <li id="mypinsLink"><a href="/myPins">My Pins</a></li>
           <li id="addLink"><a href="/add">Add</a></li>
-          <li id="loginLink"><a href="/login">Sign In/Create Account</a></li>
-          <li id="logoutLink">
-              <a href="javascript:{}" onclick="document.getElementById('my_form').submit(); return false;">Sign Out</a>
-          </li>
-          <li><a href="/twitterLogin"><img src="https://g.twimg.com/dev/sites/default/files/images_documentation/sign-in-with-twitter-gray.png" /></a></li>
+          
+            <li id="logoutLink">
+              <a href="javascript:{}" onclick="clearSession(); document.getElementById('my_form').submit(); return false;">Sign Out</a>
+            </li>
+          <% } else { %>
+            <li id="loginLink"><a href="/login">Sign In/Create Account</a></li>
+            <li><a href="/twitterLogin"><img src="https://g.twimg.com/dev/sites/default/files/images_documentation/sign-in-with-twitter-gray.png" /></a></li>
+          <% }%>
         </ul>
       </div>
       </form>
@@ -42,5 +46,14 @@
   }
   else if(currentURL === "/login"){
     document.getElementById("loginLink").className = "active";
+  }
+  function clearSession() {
+    $.ajax({
+        type: 'GET',
+        url: '/clearSession',
+        success: function(data) {
+            console.log(data);
+        }
+    });
   }
 </script>
