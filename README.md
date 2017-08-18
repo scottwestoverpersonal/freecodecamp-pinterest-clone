@@ -1,3 +1,7 @@
+# Important - Please Read
+
+Due to the Stormpath User API being shutdown, this app no longer works. It needs to be updated to use other authentication methods.
+
 # Free Code Camp - Pinterest Clone
 
 This is an example Node.js application that was built for the freecodecamp.com course. The application allows for the user to share their images with everyone on a Pinterest type wall.
